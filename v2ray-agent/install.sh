@@ -1419,18 +1419,16 @@ nginxBlog() {
 		read -r -p "检测到安装伪装站点，是否需要重新安装[y/n]:" nginxBlogInstallStatus
 		if [[ "${nginxBlogInstallStatus}" == "y" ]]; then
 			rm -rf /usr/share/nginx/html
-			randomNum=$((RANDOM % 6 + 1))
-			wget -q -P /usr/share/nginx https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${randomNum}.zip >/dev/null
-			unzip -o /usr/share/nginx/html${randomNum}.zip -d /usr/share/nginx/html >/dev/null
-			rm -f /usr/share/nginx/html${randomNum}.zip*
+			wget -q -P /usr/share/nginx https://raw.githubusercontent.com/cs950809/vps-script/main/v2ray-agent/html/mikutap.zip >/dev/null
+			unzip -o /usr/share/nginx/mikutap.zip -d /usr/share/nginx/html >/dev/null
+			rm -f /usr/share/nginx/mikutap.zip*
 			echoContent green " ---> 添加伪装站点成功"
 		fi
 	else
-		randomNum=$((RANDOM % 6 + 1))
 		rm -rf /usr/share/nginx/html
-		wget -q -P /usr/share/nginx https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${randomNum}.zip >/dev/null
-		unzip -o /usr/share/nginx/html${randomNum}.zip -d /usr/share/nginx/html >/dev/null
-		rm -f /usr/share/nginx/html${randomNum}.zip*
+		wget -q -P /usr/share/nginx https://raw.githubusercontent.com/cs950809/vps-script/main/v2ray-agent/html/mikutap.zip >/dev/null
+		unzip -o /usr/share/nginx/mikutap.zip -d /usr/share/nginx/html >/dev/null
+		rm -f /usr/share/nginx/mikutap.zip*
 		echoContent green " ---> 添加伪装站点成功"
 	fi
 
@@ -3527,13 +3525,13 @@ updateNginxBlog() {
 	if [[ "${selectInstallNginxBlogType}" =~ ^[1-9]$ ]]; then
 		rm -rf /usr/share/nginx/*
 		if wget --help | grep -q show-progress; then
-			wget -c -q --show-progress -P /usr/share/nginx "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip" >/dev/null
+			wget -c -q --show-progress -P /usr/share/nginx "https://raw.githubusercontent.com/cs950809/vps-script/main/v2ray-agent/html/mikutap.zip" >/dev/null
 		else
-			wget -c -P /usr/share/nginx "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip" >/dev/null
+			wget -c -P /usr/share/nginx "https://raw.githubusercontent.com/cs950809/vps-script/main/v2ray-agent/html/mikutap.zip" >/dev/null
 		fi
 
-		unzip -o "/usr/share/nginx/html${selectInstallNginxBlogType}.zip" -d /usr/share/nginx/html >/dev/null
-		rm -f "/usr/share/nginx/html${selectInstallNginxBlogType}.zip*"
+		unzip -o "/usr/share/nginx/mikutap.zip" -d /usr/share/nginx/html >/dev/null
+		rm -f "/usr/share/nginx/mikutap.zip*"
 		echoContent green " ---> 更换伪站成功"
 	else
 		echoContent red " ---> 选择错误，请重新选择"
